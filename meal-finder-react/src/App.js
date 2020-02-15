@@ -1,26 +1,32 @@
-import React, {useState, Fragment} from 'react';
+import React, { useState} from 'react';
 import './App.css';
 import Search from './components/Search';
-import Meals from './components/Meals'
-import axios from 'axios'
+import Meals from './components/Meals';
+import axios from 'axios';
 
 function App() {
-
-  const [meals, setMeals] = useState([]);
+  const [meals, setMeals] = useState({});
   const [meal, setMeal] = useState({});
 
-
-
-  const searchMeals = async searchTerm => {
+  const searchMeals = async meals => {
     const res = await axios.get(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${meals}`
     );
-    setMeals({meals:res.data});
+    console.log(res.data);
+    setMeals({ meals: res.data });
   };
+
+  const getMealById = async (mealid) => {
+    const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealid}`)
+    setMeal({meal: res.data.meals[0]})
+       
+      };
+  
+
   return (
     <div className='App'>
-      <Search searchMeals={searchMeals} ></Search>
-      <Meals meals={meals}></Meals>
+      <Search searchMeals={searchMeals}></Search>
+      <Meals getMealById={getMealById} searchMeals={searchMeals} meals={meals} meal={meal}></Meals>
     </div>
   );
 }

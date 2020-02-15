@@ -1,19 +1,21 @@
 import React from 'react'
 import MealsItem from './MealsItem'
 
-const Meals = ({meals})  => {
+const Meals = ({ meals}) => {
+  const mealup= Object.keys(meals)
   return (
-   
-    <div style={mealsStyle}>
-    {meals.map(meal=>
-      <MealsItem key={meal.id} meal={meal}/>)}
-  </div>
-    
-  )
-}
 
-const mealsStyle={
-  display: "grid",
-  gridTemplateColumns: "repeat(3, 1fr)"
-}
+
+    <div >
+      {Object.keys(mealup).map(meal=>(
+        <MealsItem key={meal} meal={meal}/>
+      ))}
+    </div>
+   
+  );
+
+};
+
+
+
 export default Meals

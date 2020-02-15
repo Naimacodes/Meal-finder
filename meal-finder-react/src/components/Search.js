@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 
-const Search = (props) => {
+const Search = ({searchMeals}) => {
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [text, setText] = useState('');
 
   const onChange= (e) =>{
     e.preventDefault();
-    setSearchTerm(e.target.value)
+    setText(e.target.value)
 
   }
 
   const onSubmit = (e) => {
     e.preventDefault()
-    this.props.searchMeal(searchTerm)
-    setSearchTerm('')
+    searchMeals(text)
+    setText('')
   }
 
 
@@ -22,9 +22,9 @@ const Search = (props) => {
     <div className='container'>
       <h1>Meal Finder</h1>
       <div className='flex'>
-        <form id='submit' className='flex'>
-          <input type='text' placeholder='search for meals' id='search' name="searchMeal" value={searchTerm} onChange={onChange} />
-          <button onSubmit={onSubmit} className='search-btn' type='submit'>
+        <form onSubmit={onSubmit}  id='submit' className='flex'>
+          <input type='text' placeholder='search for meals' id='search' name="searchMeal" value={text} onChange={onChange} />
+          <button   className='search-btn' type='submit'>
             <i className='fa fa-search'></i>
           </button>
         </form>
@@ -32,9 +32,7 @@ const Search = (props) => {
           <i className='fas fa-random'></i>
         </button>
       </div>
-      <div id='result-heading'></div>
-      <div id='meals' className='meals'></div>
-      <div id='single-meal'></div>
+     
     </div>
   );
 };
