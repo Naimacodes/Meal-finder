@@ -31,6 +31,7 @@ const Search = ({searchMeals}) => {
         <button className='random-btn' id='random'>
           <i className='fas fa-random'></i>
         </button>
+        
       </div>
      
     </div>
