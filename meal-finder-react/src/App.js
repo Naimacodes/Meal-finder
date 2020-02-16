@@ -5,19 +5,19 @@ import Meals from './components/Meals';
 import axios from 'axios';
 
 function App() {
-  const [meals, setMeals] = useState({});
+  const [meals, setMeals] = useState([]);
 
   const searchMeals = async meals => {
     const res = await axios.get(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${meals}`
     );
-    console.log(res.data);
+
     setMeals({ meals: res.data });
   };
 
   return (
     <div className='App'>
-      <Search searchMeals={searchMeals}></Search>
+      <Search searchMeals={searchMeals} meals={meals}></Search>
       <Meals searchMeals={searchMeals} meals={meals}></Meals>
     </div>
   );

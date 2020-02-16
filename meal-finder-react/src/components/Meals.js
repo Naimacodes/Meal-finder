@@ -1,21 +1,15 @@
-import React from 'react'
-import MealsItem from './MealsItem'
+import React from 'react';
+import MealsItem from './MealsItem';
 
-const Meals = ({ meals}) => {
-  
+const Meals = ({ meals }) => {
   return (
-
-
-    <div >
-      {Object.keys(meals).map(meal=>(
-        <MealsItem key={meal.idMeal} meal={meal}/>
+    <div>
+      {console.log(meals)}
+      {Object.keys(meals).map(meal => (
+        <MealsItem key={meal.idMeal} meal={meal} />
       ))}
     </div>
-   
   );
-  
 };
 
-
-
-export default Meals
+export default Meals;
