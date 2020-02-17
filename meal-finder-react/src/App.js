@@ -12,7 +12,7 @@ function App() {
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${meals}`
     );
 
-    setMeals({ meals: res.data });
+    setMeals(res.data.meals);
   };
 
   return (
