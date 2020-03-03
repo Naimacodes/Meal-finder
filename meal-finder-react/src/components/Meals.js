@@ -6,11 +6,12 @@ const Meals = () => {
   const mealfinderContext = useContext(MealfinderContext);
   const meals = mealfinderContext;
   return (
-    <div>
-      {console.log(meals)}
-      {meals.meals.map(meal => (
-        <MealsItem key={meal.idMeal} meal={meal} />
-      ))}
+    <div className='meals'>
+      {meals.meals !== null &&
+        meals.meals.map(meal => <MealsItem key={meal.idMeal} meal={meal} />)}
+
+      {meals.meals === null &&
+        <h3>Sorry, we did not find any recipes. Try something else! </h3>}
     </div>
   );
 };

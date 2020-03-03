@@ -18,4 +18,7 @@ const MealsItem = ({ meal : {strMealThumb, strMeal}}) => {
   );
 };
 
+
+
+
 export default MealsItem;

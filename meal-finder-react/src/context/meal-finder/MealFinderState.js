@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import MealfinderReducer from './mealfinderReducer';
 import MealfinderContext from './mealfinderContext';
 import axios from 'axios';
-import { SEARCH_MEALS, ON_CHANGE} from '../types';
+import { SEARCH_MEALS} from '../types';
 
 const MealFinderState = props => {
   const initialState = {
@@ -23,20 +23,14 @@ const MealFinderState = props => {
     });
   };
 
-  const onChange= (e) =>{
-    e.preventDefault();
-    dispatch({type: ON_CHANGE,
-      payload: e.target.value})
 
-  }
 
   return (
     <MealfinderContext.Provider
       value={{
         meals: state.meals,
-        text: state.text,
         searchMeals,
-        onChange
+        
       }}
     >
       {props.children}

@@ -18,12 +18,11 @@ const Search = () => {
   const onSubmit = (e) => {
     e.preventDefault()
     mealfinderContext.searchMeals(text)
-    
     setSearchterm(text)
     setText('')
   }
+ 
 
-console.log(typeof(meals))
 
   return (
     <div className='container'>

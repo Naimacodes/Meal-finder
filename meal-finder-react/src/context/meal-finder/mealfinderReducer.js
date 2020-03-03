@@ -1,6 +1,5 @@
 import {
 SEARCH_MEALS,
-ON_CHANGE
 } from "../types";
 
 export default (state, action) => {
@@ -10,11 +9,6 @@ export default (state, action) => {
         ...state,
         meals: action.payload,
       };
-      case ON_CHANGE:
-        return {
-          ...state,
-          text: action.payload,
-        };
     default:
       return {
         ...state
