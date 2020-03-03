@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import MealsItem from './MealsItem';
+import MealfinderContext from '../context/meal-finder/mealfinderContext';
 
-const Meals = ({ meals }) => {
+const Meals = () => {
+  const mealfinderContext = useContext(MealfinderContext);
+  const meals = mealfinderContext;
   return (
     <div>
       {console.log(meals)}
-      {(meals).map(meal => (
+      {meals.meals.map(meal => (
         <MealsItem key={meal.idMeal} meal={meal} />
       ))}
     </div>

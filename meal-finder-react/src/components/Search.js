@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import MealfinderContext from '../context/meal-finder/mealfinderContext'
 
-const Search = ({searchMeals}) => {
+const Search = () => {
 
+  const mealfinderContext = useContext(MealfinderContext)
   const [text, setText] = useState('');
+  const [searchterm, setSearchterm] = useState('')
 
   const onChange= (e) =>{
     e.preventDefault();
     setText(e.target.value)
-
+    
   }
+
+  
 
   const onSubmit = (e) => {
     e.preventDefault()
-    searchMeals(text)
+    mealfinderContext.searchMeals(text)
+    
+    setSearchterm(text)
     setText('')
   }
 
-
+console.log(typeof(meals))
 
   return (
     <div className='container'>
@@ -33,7 +40,9 @@ const Search = ({searchMeals}) => {
         </button>
         
       </div>
-     
+      <div id='result-heading'>
+       <h2>Search result for {searchterm}: </h2>
+      </div>
     </div>
   );
 };
