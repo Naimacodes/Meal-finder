@@ -1,5 +1,6 @@
 import {
 SEARCH_MEALS,
+RANDOM_MEALS
 } from "../types";
 
 export default (state, action) => {
@@ -9,6 +10,11 @@ export default (state, action) => {
         ...state,
         meals: action.payload,
       };
+      case RANDOM_MEALS:
+        return {
+          ...state,
+          meals: action.payload,
+        };
     default:
       return {
         ...state

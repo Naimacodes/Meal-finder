@@ -23,6 +23,10 @@ const Search = () => {
   }
  
 
+  const random = (e) => {
+    mealfinderContext.randomMeals()
+  }
+
 
   return (
     <div className='container'>
@@ -34,7 +38,7 @@ const Search = () => {
             <i className='fa fa-search'></i>
           </button>
         </form>
-        <button className='random-btn' id='random'>
+        <button className='random-btn' onClick={random} id='random'>
           <i className='fas fa-random'></i>
         </button>
         
