@@ -4,9 +4,9 @@ import MealfinderContext from '../context/meal-finder/mealfinderContext'
 const Search = () => {
 
   const mealfinderContext = useContext(MealfinderContext)
-  const {meals, meal} = mealfinderContext
   const [text, setText] = useState('');
   const [searchterm, setSearchterm] = useState('')
+  const [toggle, setToggle] = useState(false)
 
   const onChange= (e) =>{
     e.preventDefault();
@@ -21,6 +21,7 @@ const Search = () => {
     mealfinderContext.searchMeals(text)
     setSearchterm(text)
     setText('')
+    setToggle(true)
   }
  
 
@@ -45,7 +46,7 @@ const Search = () => {
         
       </div>
       <div id='result-heading'>
-      {meals.length > 0 && <h2>Search result for {searchterm}: </h2>}
+       {toggle && <h2>Search result for {searchterm}: </h2> }
       
       </div>
     </div>

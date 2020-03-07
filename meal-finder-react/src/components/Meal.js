@@ -27,8 +27,8 @@ const Meal = ({match }) => {
       <h1>{strMeal}</h1>
       <img src={strMealThumb} alt={meals.strMeal} />
       <div class='single-meal-info'>
-        {strCategory ? `<p>${strCategory}</p>` : ''}
-        {strArea ? `<p>${strArea}</p>` : ''}
+        {strCategory ? <p>{strCategory}</p> : ''}
+        {strArea ? <p>{strArea}</p> : ''}
       </div>
       <div class='main'>
         <p>{strInstructions}</p>
