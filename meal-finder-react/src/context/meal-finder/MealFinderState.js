@@ -2,12 +2,19 @@ import React, { useReducer } from 'react';
 import MealfinderReducer from './mealfinderReducer';
 import MealfinderContext from './mealfinderContext';
 import axios from 'axios';
-import { SEARCH_MEALS, RANDOM_MEALS, GET_MEAL_BY_ID } from '../types';
+import {
+  SEARCH_MEALS,
+  RANDOM_MEALS,
+  GET_MEAL_BY_ID,
+  DISPLAY_RECIPE
+} from '../types';
 
 const MealFinderState = props => {
   const initialState = {
     meals: [],
-    text: ''
+    meal: {},
+    text: '',
+    showRecipe: false
   };
 
   const [state, dispatch] = useReducer(MealfinderReducer, initialState);
@@ -45,14 +52,19 @@ const MealFinderState = props => {
     });
   };
 
+  const displayRecipe = () => {
+    dispatch({ type: DISPLAY_RECIPE });
+  };
+
   return (
     <MealfinderContext.Provider
       value={{
         meals: state.meals,
+        meal: state.meal,
         searchMeals,
-        randomMeals, 
-        getMealById 
-
+        randomMeals,
+        getMealById,
+        displayRecipe
       }}
     >
       {props.children}

@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Search from './components/Search';
 import Meals from './components/Meals';
+import Meal from './components/Meal';
 function App() {
   return (
     <MealFinderState>
@@ -15,6 +16,11 @@ function App() {
                 <Search></Search> 
                 <Meals></Meals>
               </Route>
+              <Route
+                  exact
+                  path='/meal/:idMeal'
+                  render={props => <Meal {...props} />}
+                ></Route>
             </div>
           </div>
         </Switch>

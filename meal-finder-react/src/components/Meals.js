@@ -8,7 +8,7 @@ const Meals = () => {
 
   return (
     <div className='meals'>
-     { console.log(meals)}
+     
       {meals.meals !== null &&
         meals.meals.map(meal => <MealsItem key={meal.idMeal} meal={meal} />)}
 

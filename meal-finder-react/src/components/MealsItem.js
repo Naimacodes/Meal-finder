@@ -1,25 +1,28 @@
 import React, { Fragment, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Meal from './Meal'
+import { Link } from 'react-router-dom';
 
-const MealsItem = ({ meal: { strMealThumb, strMeal, idMeal} }) => {
- const [showRecipe, setShowRecipe] = useState(false)
+
+const MealsItem = ({ meal: { strMealThumb, strMeal, idMeal } }) => {
+  const [showRecipe, setShowRecipe] = useState(false);
   const displayRecipe = () => {
-    setShowRecipe(!showRecipe
-    )
-}
+    setShowRecipe(!showRecipe);
+  };
   return (
-  
     <Fragment>
-      <div className='meal' onClick={displayRecipe} >
+      <div className='meal' onClick={displayRecipe}>
         <img src={strMealThumb} alt={strMeal} />
         <div className='meal-info'>
-          <h3>{strMeal}</h3>
-        </div>
-      </div>
-      <Link to={`/meal/${idMeal}`} className='btn btn-dark btn-sm my-1'>
-            More
+              <h3>{strMeal}</h3>
+            </div>
+        
+        {showRecipe && (
+          <Link to={`/meal/${idMeal}`}>
+             <div className='meal-info'>
+              <h3>{strMeal}</h3>
+            </div>
           </Link>
+        )}
+      </div>
     </Fragment>
   );
 };

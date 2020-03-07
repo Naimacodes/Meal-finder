@@ -1,7 +1,8 @@
 import {
 SEARCH_MEALS,
 RANDOM_MEALS,
-GET_MEAL_BY_ID
+GET_MEAL_BY_ID,
+DISPLAY_RECIPE
 } from "../types";
 
 export default (state, action) => {
@@ -19,8 +20,13 @@ export default (state, action) => {
         case GET_MEAL_BY_ID:
           return {
             ...state,
-            meals: action.payload,
+            meal: action.payload,
           };
+          case DISPLAY_RECIPE:
+            return {
+              ...state,
+              showRecipe: true
+            };
     default:
       return {
         ...state
