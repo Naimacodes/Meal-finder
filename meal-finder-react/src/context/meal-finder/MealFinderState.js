@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import MealfinderReducer from './mealfinderReducer';
 import MealfinderContext from './mealfinderContext';
 import axios from 'axios';
-import { SEARCH_MEALS, RANDOM_MEALS} from '../types';
+import { SEARCH_MEALS, RANDOM_MEALS, GET_MEAL_BY_ID } from '../types';
 
 const MealFinderState = props => {
   const initialState = {
@@ -33,15 +33,26 @@ const MealFinderState = props => {
       payload: res.data.meals
     });
   };
-  
+
+  const getMealById = async mealID => {
+    const res = await axios.get(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`
+    );
+
+    dispatch({
+      type: GET_MEAL_BY_ID,
+      payload: res.data.meals[0]
+    });
+  };
 
   return (
     <MealfinderContext.Provider
       value={{
         meals: state.meals,
         searchMeals,
-        randomMeals
-        
+        randomMeals, 
+        getMealById 
+
       }}
     >
       {props.children}

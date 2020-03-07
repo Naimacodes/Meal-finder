@@ -1,14 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import MealfinderContext from '../context/meal-finder/mealfinderContext';
 
 const Meal = ({meal}) => {
 
   const mealfinderContext = useContext(MealfinderContext);
-  
+  const ingredients = [];
   return (
     <div class="single-meal">
       <h1>${meal.strMeal}</h1>
-      <img src="${meal.strMealThumb}" alt="${meal.strMeal}" />
+      <img src={meal.strMealThumb} alt={meal.strMeal} />
       <div class="single-meal-info">
         ${meal.strCategory ? `<p>${meal.strCategory}</p>` : ''}
         ${meal.strArea ? `<p>${meal.strArea}</p>` : ''}

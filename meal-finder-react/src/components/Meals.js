@@ -5,8 +5,10 @@ import MealfinderContext from '../context/meal-finder/mealfinderContext';
 const Meals = () => {
   const mealfinderContext = useContext(MealfinderContext);
   const meals = mealfinderContext;
+
   return (
     <div className='meals'>
+     { console.log(meals)}
       {meals.meals !== null &&
         meals.meals.map(meal => <MealsItem key={meal.idMeal} meal={meal} />)}
 

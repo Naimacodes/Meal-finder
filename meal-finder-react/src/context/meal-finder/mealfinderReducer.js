@@ -1,6 +1,7 @@
 import {
 SEARCH_MEALS,
-RANDOM_MEALS
+RANDOM_MEALS,
+GET_MEAL_BY_ID
 } from "../types";
 
 export default (state, action) => {
@@ -15,6 +16,11 @@ export default (state, action) => {
           ...state,
           meals: action.payload,
         };
+        case GET_MEAL_BY_ID:
+          return {
+            ...state,
+            meals: action.payload,
+          };
     default:
       return {
         ...state
