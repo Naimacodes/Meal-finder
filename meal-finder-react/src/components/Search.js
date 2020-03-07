@@ -4,6 +4,7 @@ import MealfinderContext from '../context/meal-finder/mealfinderContext'
 const Search = () => {
 
   const mealfinderContext = useContext(MealfinderContext)
+  const {meals, meal} = mealfinderContext
   const [text, setText] = useState('');
   const [searchterm, setSearchterm] = useState('')
 
@@ -44,7 +45,8 @@ const Search = () => {
         
       </div>
       <div id='result-heading'>
-       <h2>Search result for {searchterm}: </h2>
+      {meals.length > 0 && <h2>Search result for {searchterm}: </h2>}
+      
       </div>
     </div>
   );

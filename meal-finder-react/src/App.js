@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import MealFinderState from './context/meal-finder/MealFinderState';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -12,15 +12,26 @@ function App() {
         <Switch>
           <div className='App'>
             <div className='container'>
-              <Route>
-                <Search></Search> 
-                <Meals></Meals>
-              </Route>
               <Route
-                  exact
-                  path='/meal/:idMeal'
-                  render={props => <Meal {...props} />}
-                ></Route>
+                exact
+                path='/'
+                render={props => (
+                  <Fragment>
+                    <Search></Search>
+                    <Meals></Meals>
+                  </Fragment>
+                )}
+              ></Route>
+              <Route
+                exact
+                path='/meal/:idMeal'
+                render={props => (
+                  <Fragment>
+                    <Search></Search>
+                    <Meal {...props} />
+                  </Fragment>
+                )}
+              ></Route>
             </div>
           </div>
         </Switch>

@@ -61,6 +61,7 @@ const MealFinderState = props => {
       value={{
         meals: state.meals,
         meal: state.meal,
+        showRecipe: state.meal,
         searchMeals,
         randomMeals,
         getMealById,
