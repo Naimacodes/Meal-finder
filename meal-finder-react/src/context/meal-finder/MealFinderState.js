@@ -14,6 +14,7 @@ const MealFinderState = props => {
     meals: [],
     meal: {},
     text: '',
+    ingredients: [],
     showRecipe: false
   };
 
@@ -62,6 +63,7 @@ const MealFinderState = props => {
         meals: state.meals,
         meal: state.meal,
         showRecipe: state.meal,
+        ingredients: state.ingredients,
         searchMeals,
         randomMeals,
         getMealById,
