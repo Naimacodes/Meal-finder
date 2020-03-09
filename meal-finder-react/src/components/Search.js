@@ -34,7 +34,7 @@ const Search = () => {
 
   return (
     <div className='container'>
-      <img src={logo} className='logo'></img>
+      <img src={logo} className='logo' alt='logo'></img>
       <div className='flex'>
         <form onSubmit={onSubmit}  className='flex'>
           <input type='text' placeholder='search for meals'  name="searchMeal" value={text} onChange={onChange} />
@@ -48,7 +48,7 @@ const Search = () => {
         
       </div>
       <div>
-       {toggle && <h2>SEARCH RESULT FOR {searchterm.toLocaleUpperCase()}: </h2> }
+       {toggle && <h2>SEARCH RESULT FOR {searchterm}: </h2> }
       
       </div>
     </div>

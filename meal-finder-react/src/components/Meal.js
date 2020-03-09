@@ -41,11 +41,10 @@ const Meal = ({ match }) => {
       <h1>{strMeal}</h1>
       <img src={strMealThumb} alt={meals.strMeal} className='single-meal-img' />
       <div className='single-meal-info'>
-        {strCategory ? <p>{strCategory}</p> : ''}
-        {strArea ? <p>{strArea}</p> : ''}
+        {strCategory ? <p>{strCategory}</p> : ''}{strArea ? <p>{strArea}</p> : ''}
       </div>
       <div className='main'>
-        <p>{strInstructions}</p>
+        <p style={{textAlign: 'justify'}}>{strInstructions}</p>
         <h2>Ingredients</h2>
         <ul>
           {food[0].map(

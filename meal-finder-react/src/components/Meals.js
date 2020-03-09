@@ -8,12 +8,14 @@ const Meals = () => {
 
   return (
     <div className='meals'>
-     
       {meals.meals !== null &&
         meals.meals.map(meal => <MealsItem key={meal.idMeal} meal={meal} />)}
 
-      {meals.meals === null &&
-        <h3>Sorry, we did not find any recipes. Try something else! </h3>}
+      {meals.meals === null && (
+        <h3>
+          Sorry, we did not find any recipes. Try something else!{' '}
+        </h3>
+      )}
     </div>
   );
 };
