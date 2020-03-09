@@ -1,6 +1,10 @@
-## Meal Finder App
+# Meal Finder App
 
 An app to search and generate random meals from the [themealdb.com](www.themealdb.com) API
+
+## Preview
+
+![image](/screenshot.PNG)
 
 ## Project Specifications
 
@@ -9,3 +13,9 @@ An app to search and generate random meals from the [themealdb.com](www.themeald
 - Display meals in DOM with image and hover effect
 - Click on meal and see the details
 - Click on generate button and fetch & display a random meal
+
+## Technologies
+
+- Reactjs
+- CSS
+
