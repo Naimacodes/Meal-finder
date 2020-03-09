@@ -18,10 +18,11 @@ const Search = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    mealfinderContext.searchMeals(text)
+    if (text !== "")
+   { mealfinderContext.searchMeals(text)
     setSearchterm(text)
     setText('')
-    setToggle(true)
+    setToggle(true)}
   }
  
 
@@ -34,18 +35,18 @@ const Search = () => {
     <div className='container'>
       <h1>Meal Finder</h1>
       <div className='flex'>
-        <form onSubmit={onSubmit}  id='submit' className='flex'>
-          <input type='text' placeholder='search for meals' id='search' name="searchMeal" value={text} onChange={onChange} />
+        <form onSubmit={onSubmit}  className='flex'>
+          <input type='text' placeholder='search for meals'  name="searchMeal" value={text} onChange={onChange} />
           <button   className='search-btn' type='submit'>
             <i className='fa fa-search'></i>
           </button>
         </form>
-        <button className='random-btn' onClick={random} id='random'>
+        <button className='random-btn' onClick={random}>
           <i className='fas fa-random'></i>
         </button>
         
       </div>
-      <div id='result-heading'>
+      <div>
        {toggle && <h2>Search result for {searchterm}: </h2> }
       
       </div>

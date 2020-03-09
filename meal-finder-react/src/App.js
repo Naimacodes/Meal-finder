@@ -27,7 +27,6 @@ function App() {
                 path='/meal/:idMeal'
                 render={props => (
                   <Fragment>
-                    <Search></Search>
                     <Meal {...props} />
                   </Fragment>
                 )}

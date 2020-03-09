@@ -1,54 +1,62 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import {Link} from 'react-router-dom'
 import MealfinderContext from '../context/meal-finder/mealfinderContext';
 
 const Meal = ({ match }) => {
   const mealfinderContext = useContext(MealfinderContext);
   const { meals, meal, getMealById } = mealfinderContext;
-  const [ingredientList, setIngredientList] = useState([]);
+
 
   useEffect(() => {
     getMealById(match.params.idMeal);
-
     //eslint-disable-next-line
   }, []);
 
   const { strMeal, strMealThumb, strCategory, strArea, strInstructions } = meal;
 
-  // const addIngredients = meal => {
-  //   const ingredients = [];
-  //   for (let i = 1; i <= 20; i++) {
-  //     if (meal.strIngredient) {
-  //       ingredients.push(meal[`strIngredient${i}`])
-  //     }else{
-  //       break
-  //     }
-  //     console.log(meal.strIngredient1)
-  //     setIngredientList(ingredients);
-  //   }
-  // };
+  const addIngredients = meal => {
+    const ingredients = [];
+    for (let i = 1; i <= 20; i++) {
+      if (`${meal[`strIngredient${i}`]}`) {
+        const pair = {
+          ingredient: `${meal[`strIngredient${i}`]}`,
+          measure: `${meal[`strMeasure${i}`]}`
+        };
+        ingredients.push(pair);
+      } else {
+        // console.log(22)
+        break;
+      }
+    }
 
-  const pairs = Object.entries(meal);
-
- 
-
+    return ingredients;
+  };
+  const food = [];
+  if (meal !== null) {
+    food.push(addIngredients(meal));
+  }
+  console.log(food);
   return (
-    <div class='single-meal'>
-      {console.log(pairs)}
+    <div className='single-meal'>
+      {console.log(meal)}
       <h1>{strMeal}</h1>
       <img src={strMealThumb} alt={meals.strMeal} />
-      <div class='single-meal-info'>
+      <div className='single-meal-info'>
         {strCategory ? <p>{strCategory}</p> : ''}
         {strArea ? <p>{strArea}</p> : ''}
       </div>
-      <div class='main'>
+      <div className='main'>
         <p>{strInstructions}</p>
         <h2>Ingredients</h2>
         <ul>
-          {/* {addIngredients(meal)} */}
-          {/* {ingredientList.map(ing => `<li>${ing}</li>`).join('')} */}
+          {food[0].map(ing => 
+           ing.ingredient !== 'null' && <li>{ing.ingredient} - {ing.measure}</li>
+          )}
         </ul>
       </div>
+      <button className="search-btn"> <Link to='/' style={{textDecoration: 'none'}}>Go back</Link></button>
     </div>
+    
   );
 };
 
