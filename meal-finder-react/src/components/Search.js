@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import MealfinderContext from '../context/meal-finder/mealfinderContext'
+import logo from '../Utilities/logo.png'
 
 const Search = () => {
 
@@ -33,7 +34,7 @@ const Search = () => {
 
   return (
     <div className='container'>
-      <h1>Meal Finder</h1>
+      <img src={logo} className='logo'></img>
       <div className='flex'>
         <form onSubmit={onSubmit}  className='flex'>
           <input type='text' placeholder='search for meals'  name="searchMeal" value={text} onChange={onChange} />
@@ -47,7 +48,7 @@ const Search = () => {
         
       </div>
       <div>
-       {toggle && <h2>Search result for {searchterm}: </h2> }
+       {toggle && <h2>SEARCH RESULT FOR {searchterm.toLocaleUpperCase()}: </h2> }
       
       </div>
     </div>

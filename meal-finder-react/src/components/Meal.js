@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import MealfinderContext from '../context/meal-finder/mealfinderContext';
 
 const Meal = ({ match }) => {
   const mealfinderContext = useContext(MealfinderContext);
   const { meals, meal, getMealById } = mealfinderContext;
-
 
   useEffect(() => {
     getMealById(match.params.idMeal);
@@ -40,7 +39,7 @@ const Meal = ({ match }) => {
     <div className='single-meal'>
       {console.log(meal)}
       <h1>{strMeal}</h1>
-      <img src={strMealThumb} alt={meals.strMeal} />
+      <img src={strMealThumb} alt={meals.strMeal} className='single-meal-img' />
       <div className='single-meal-info'>
         {strCategory ? <p>{strCategory}</p> : ''}
         {strArea ? <p>{strArea}</p> : ''}
@@ -49,14 +48,23 @@ const Meal = ({ match }) => {
         <p>{strInstructions}</p>
         <h2>Ingredients</h2>
         <ul>
-          {food[0].map(ing => 
-           ing.ingredient !== 'null' && <li>{ing.ingredient} - {ing.measure}</li>
+          {food[0].map(
+            ing =>
+              ing.ingredient !== 'null' && (
+                <li style={{ listStyle: 'none' }}>
+                  {ing.ingredient} - {ing.measure}
+                </li>
+              )
           )}
         </ul>
       </div>
-      <button className="search-btn"> <Link to='/' style={{textDecoration: 'none'}}>Go back</Link></button>
+      <button className='random-btn'>
+        {' '}
+        <Link to='/' style={{ textDecoration: 'none'}}>
+          Go back
+        </Link>
+      </button>
     </div>
-    
   );
 };
 
