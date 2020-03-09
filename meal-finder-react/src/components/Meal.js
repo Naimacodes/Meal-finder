@@ -23,7 +23,6 @@ const Meal = ({ match }) => {
         };
         ingredients.push(pair);
       } else {
-        // console.log(22)
         break;
       }
     }
@@ -34,17 +33,17 @@ const Meal = ({ match }) => {
   if (meal !== null) {
     food.push(addIngredients(meal));
   }
-  console.log(food);
+
   return (
     <div className='single-meal'>
-      {console.log(meal)}
       <h1>{strMeal}</h1>
       <img src={strMealThumb} alt={meals.strMeal} className='single-meal-img' />
       <div className='single-meal-info'>
-        {strCategory ? <p>{strCategory}</p> : ''}{strArea ? <p>{strArea}</p> : ''}
+        {strCategory ? <p>{strCategory}</p> : ''}
+        {strArea ? <p>{strArea}</p> : ''}
       </div>
       <div className='main'>
-        <p style={{textAlign: 'justify'}}>{strInstructions}</p>
+        <p style={{ textAlign: 'justify' }}>{strInstructions}</p>
         <h2>Ingredients</h2>
         <ul>
           {food[0].map(
@@ -59,7 +58,7 @@ const Meal = ({ match }) => {
       </div>
       <button className='random-btn'>
         {' '}
-        <Link to='/' style={{ textDecoration: 'none'}}>
+        <Link to='/' style={{ textDecoration: 'none' }}>
           Go back
         </Link>
       </button>
